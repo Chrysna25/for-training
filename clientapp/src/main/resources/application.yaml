@@ -1,0 +1,17 @@
+# setup port
+server:
+  port: 9005
+  #get domain from serverapp
+  
+  base:
+    url: http://localhost:9090
+
+spring:
+  # setup project name
+  application:
+    name: Client App
+  # open all http method => default get & post
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

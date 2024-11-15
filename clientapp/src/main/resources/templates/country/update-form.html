@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}"
+>
+  <head>
+
+    <!-- title web -->
+    <title>Update of Country</title>
+  </head>
+
+  <body>
+    <!-- content -->
+    <section class="container" layout:fragment="content">
+      <div class="card mt-5">
+        <h5 class="card-header fw-bold text-center bg-primary bg-opacity-50">Update of Country</h5>
+        <div class="card-body">
+          <form th:action="@{/country/{id} (id = ${country.id})}" th:method="PUT" th:object="${country}">
+            <!-- code -->
+            <div class="input-group flex-nowrap my-4">
+              <span class="input-group-text fw-bold bg-primary bg-opacity-50" id="addon-wrapping"
+                >Code</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                placeholder="code"
+                aria-label="code"
+                aria-describedby="addon-wrapping"
+                th:field="*{code}"
+                required
+              />
+            </div>
+
+            <!-- name -->
+            <div class="input-group flex-nowrap my-2">
+              <span class="input-group-text fw-bold bg-primary bg-opacity-50" id="addon-wrapping"
+                >Name</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                placeholder="name"
+                aria-label="name"
+                aria-describedby="addon-wrapping"
+                th:field="*{name}"
+                required
+              />
+            </div>
+
+            <!-- region -->
+            <div class="input-group flex-nowrap my-4">
+              <span
+                class="input-group-text fw-bold bg-primary bg-opacity-50"
+                id="addon-wrapping"
+                >Region</span
+              >
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                th:field="*{region.id}"
+                required
+              >
+                <option
+                  th:each="region : ${regions}"
+                  th:value="${region.id}"
+                  th:text="${region.name}"
+                >
+                  One
+                </option>
+              </select>
+            </div>
+
+            <div class="mt-4 d-flex gap-3">
+              <button type="submit" class="btn btn-success ">
+                Save
+              </button>
+              <a href="/country" class="btn btn-secondary ">Back</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
